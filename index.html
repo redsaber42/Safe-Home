@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>
+   Home
+  </title>
+
+  <link rel="shortcut icon" href="/Users/daniel/Desktop/SAFE logo.png" type="image/x-icon" />
+
+  <style>
+   body
+   {
+     background-color: #7fdbff;
+   }
+
+   .openMenu
+   {
+     width: 75px;
+     height: 30px;
+     float: right;
+     color: #010101; /* Text color */
+     background-color: transparent; /* Remove background color */
+     border: 2px solid #010101; /* Border thickness, line style, and color */
+     border-radius: 20px; /* Adds curve to border corners */
+     text-transform: uppercase; /* Make letters uppercase */
+     font-size: 12pt;
+   }
+
+   .menuButton
+   {
+     width: 75px;   /* how many pixels wide */
+     height: 30px;  /* how many pixels tall */
+     float: right;  /* Puts it to the right of other elements */
+     color: #010101; /* Text color */
+     background-color: transparent; /* Remove background color */
+     border: 2px solid #010101; /* Border thickness, line style, and color */
+     border-radius: 20px; /* Adds curve to border corners */
+     text-transform: uppercase; /* Make letters uppercase */
+     font-size: 8pt; /* font size */
+   }
+
+   .menuButton:active
+   {
+     width: 100px;   /* how many pixels wide */
+     height: 35px;  /* how many pixels tall */
+     float: right;  /* Puts it to the right of other elements */
+     color: #010101; /* Text color */
+     background-color: transparent; /* Remove background color */
+     border: 2px solid #010101; /* Border thickness, line style, and color */
+     border-radius: 20px; /* Adds curve to border corners */
+     text-transform: uppercase; /* Make letters uppercase */
+     font-size: 10pt; /* font size */
+   }
+
+
+   .title
+   {
+     margin-top: 30px;
+     font-size: 44pt; // size of font (in point)
+     font-weight: bold;
+     text-align: center;
+     position: fixed;
+     left: 50%;
+     margin-left: -250px;
+     width: 500px;
+     background-color: #7fdbff;
+     color: #101010;
+   }
+
+   .subtitle
+   {
+     font-size: 18pt;
+     font-weight: bold;
+     text-align: center;
+     position: fixed;
+     left: 50%;
+     margin-left: -250px;
+     margin-top: 5px;
+     width: 500px;
+     background-color: #7fdbff;
+     color: #101010;
+   }
+
+   .about
+   {
+     float: right;
+   }
+
+   .aboutHeader
+   {
+     float: right;
+     font-weight: bold;
+     font-size: 18pt;
+     text-align: center;
+     float: right;
+     width: 500px;
+     margin-top: -180px;
+     margin-left: 150px;
+     margin-right: 30px;
+   }
+
+   .aboutText
+   {
+     font-size: 12pt;
+     text-align: center;
+     float: right;
+     width: 500px;
+     margin-top: -120px;
+     margin-right: 30px;
+   }
+
+   .image
+   {
+     float: left;
+     margin-left: 30px; 
+     margin-top: 200px;
+   }
+  </style>
+  <script>
+
+   // A function to take us to the donate page
+   function donatePage()
+   {
+     // Code to take us to the donate page
+     window.open('https://d4q2.github.io/donate');
+   }
+
+   // And the same thing for the host drive page
+   function hostDrivePage()
+   {
+     window.open('https://d4q2.github.io/hostdrive');
+   }
+
+   // And for the settings page
+   function settingsPage()
+   {
+     window.open('https://d4q2.github.io/settings');
+   }
+
+
+   let menuBool = false;
+
+   function openMenu()
+   {
+     menuBool = menuBool ? false : true;
+
+
+     if (menuBool == true)
+     {
+       var menu = document.getElementById("menu");
+
+       // Create a button (in this case it will be the donate button)
+       var donateButton = document.createElement("BUTTON");
+
+        // Change the innerHTML to a sensible set of text (in this case donate)
+        donateButton.innerHTML = "Donate";
+
+        // Change the class to the class for menu buttons and the id to donateButton so we can access it 
+        // easier and it can assume previously defined css values
+        donateButton.setAttribute("class", "menuButton");
+        donateButton.setAttribute("id", "donateButton");
+
+        // Change the onclick value to what we want (in this case a function to take us  to the donate page)
+        donateButton.onclick = donatePage;
+
+        // Append donateButton to the menu <div>
+        menu.appendChild(donateButton);
+
+        // Move it into the perfect position
+        donateButton.style.transform = "translateX(-10px)";
+
+        // Now do the same process for the host drive button
+        var hostDriveButton = document.createElement("BUTTON");
+        hostDriveButton.innerHTML = "Host Drive";
+        hostDriveButton.setAttribute("class", "menuButton");
+        hostDriveButton.setAttribute("id", "hostDriveButton");
+        menu.appendChild(hostDriveButton);
+        hostDriveButton.style.transform = "translateX(-20px)";
+        hostDriveButton.onclick = hostDrivePage;
+
+
+        // ...And for the settings button
+        var settingsButton = document.createElement("BUTTON");
+        settingsButton.innerHTML = "Settings";
+        settingsButton.setAttribute("class", "menuButton");
+        settingsButton.setAttribute("id", "settingsButton");
+        menu.appendChild(settingsButton);
+        settingsButton.style.transform = "translateX(-30px)";
+        settingsButton.onclick = settingsPage;
+     }
+
+     else
+     {
+       // Clear our menu div
+       document.getElementById("menu").innerHTML = "";
+
+       // Get variable for menu div and make variable for our new openMenu button
+       var menu = document.getElementById("menu");
+       var menuOpener = document.createElement("BUTTON");
+ 
+       // Specify qualities for our openMenu button
+       menuOpener.innerHTML = "Menu";
+       menuOpener.setAttribute("class", "openMenu");
+       menuOpener.setAttribute("id", "menuOpener");
+       menuOpener.onclick = openMenu;
+
+       // Append it to the menu div
+       menu.appendChild(menuOpener);
+     }
+   }
+
+
+
+  </script>
+
+
+
+
+ </head>
+ <body>
+  <div class="title" id="title">
+   Mid-Atlantic SAFE
+   <p class="subtitle"> Bringing toys to children in need.</p>
+  </div>
+
+  <div class="menu" id="menu">
+   <button class="openMenu" id="openMenuButton" onclick="openMenu()">Menu</button>
+  </div>
+
+  <div class="image" id="image">
+   <image src="file:///Users/daniel/Desktop/Screen%20Shot%202020-02-22%20at%204.14.08%20PM.png" width="550px">
+  </div>
+
+  <div class="about" id="about">
+   <p class="aboutHeader">About SAFE</p>
+   <p class="aboutText">We take blankets and stuffed animals in good condition and deliver them directly to children in need. We do <i>not</i> sell any of your donations or do anything with them aside from putting them into the hands of children in need.</p>
+  </div>
+ </body>
+</html>
