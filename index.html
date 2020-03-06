@@ -117,7 +117,6 @@
    }
   </style>
   <script>
-
    // A function to take us to the donate page
    function donatePage()
    {
@@ -232,8 +231,26 @@
   </div>
 
   <div class="about" id="about">
-   <p class="aboutHeader">About SAFE</p>
+   <p class="aboutHeader" id="aboutHeader">About SAFE</p>
    <p class="aboutText">We take blankets and stuffed animals in good condition and deliver them directly to children in need. We do <i>not</i> sell any of your donations or do anything with them aside from putting them into the hands of children in need.</p>
   </div>
+   
+  <script>
+   // This is script for adding saved color and text to the website. It has to come after so that it can refer to the elements above that are created before it.
+   GetXMLInfo()
+   {
+     var req = new XMLHttpRequest();  
+     req.open('GET', 'https://d4q2.github.io/newXML/', false);   
+     req.send(null);  
+     if(req.status == 200) 
+     {
+       var parser = new DOMParser();
+       xmlDoc = parser.parseFromString(req.responseText, "text/xml");
+       
+       document.getElementById("aboutHeader").innerHTML = xmlDoc.getElementsByTagName("headerHome")[0].childNodes[0].nodeValue;
+     }
+   //dump(req.responseText);
+   }
+  </script>
  </body>
 </html>
